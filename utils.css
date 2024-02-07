@@ -1,0 +1,19 @@
+.bg-red {
+    background: blueviolet;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .item-centre{
+    align-items: center;
+  }
+  
+  .text-center{
+    text-align: center;
+  }
