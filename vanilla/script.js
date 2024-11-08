@@ -1,5 +1,6 @@
 let string = "";
 let buttons = document.querySelectorAll(`.button`);
+let decimalValid = true;
 Array.from(buttons).forEach((button) => {
   button.addEventListener(`click`, (e) => {
 
@@ -30,10 +31,20 @@ Array.from(buttons).forEach((button) => {
       console.log(e.target)
 
       const lastChar = string.slice(-1);
-      if (
+      if ( // prevent repetition operator and decimal
         (isOperator(lastChar) && isOperator(e.target.innerHTML)) ||
         (isDecimal(lastChar) && isDecimal(e.target.innerHTML))
       ) { return; }
+
+      if(decimalValid == false){  //cannot have two decimal for one num
+        if(isDecimal(e.target.innerHTML))
+          { return; }
+      }
+
+      if(isDecimal(e.target.innerHTML))
+      { decimalValid = false; }
+      if(isOperator(e.target.innerHTML))
+      { decimalValid = true; }
 
       string = string + e.target.innerHTML;
       document.querySelector('input').value = string;
